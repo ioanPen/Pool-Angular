@@ -1,0 +1,8 @@
+<h2>Departments</h2>
+
+<ul>
+  @for (dep of departments; track dep.id)
+  {
+    <li><a [routerLink]="['/departments', dep.id]">{{dep.name}}</a></li>
+  }
+</ul>

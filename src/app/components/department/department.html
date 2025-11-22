@@ -1,0 +1,27 @@
+@if (department){
+  <h2>{{department.name}}</h2>
+
+  <h3>Professors</h3>
+  <ul>
+    @for (prof of department.professors; track prof.id)
+    {
+    <li>{{prof.name}} {{prof.surname}}</li>
+    }
+  </ul>
+
+  <h3>Courses</h3>
+  <ul>
+    @for (course of department.courses; track course.id)
+    {
+    <li>{{course.name}}</li>
+    }
+  </ul>
+
+  <h3>Students</h3>
+  <ul>
+    @for (student of department.students; track student.id)
+    {
+    <li>{{student.name}} {{student.surname}}</li>
+    }
+  </ul>
+}

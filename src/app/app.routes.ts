@@ -1,19 +1,25 @@
 import { Routes } from '@angular/router';
-import { Home } from './features/home/home';
-import { Departments } from './features/departments/departments';
-import { Courses } from './features/courses/courses';
-import { Professors } from './features/professors/professors';
-import { Login } from './features/login/login';
-import { Logout } from './features/logout/logout';
-import { Students } from './features/students/students';
+import { Home } from './components/home/home';
+import { Departments } from './components/departments/departments';
+import { Courses } from './components/courses/courses';
+import { Professors } from './components/professors/professors';
+import { Login } from './components/login/login';
+import { Logout } from './components/logout/logout';
+import { Students } from './components/students/students';
+import { Department } from './components/department/department';
+import { Empty } from './components/empty/empty';
 
 export const routes: Routes = [
-  { path: 'home', component: Home},
-  { path: 'departments', component: Departments},
+  { path: '', component: Home},
+
   { path: 'courses', component: Courses},
+  { path: 'departments', component: Departments},
+  { path: 'departments/:id', component: Department},
   { path: 'professors', component: Professors},
   { path: 'students', component: Students},
+
   { path: 'login', component: Login},
   { path: 'logout', component: Logout},
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+
+  { path: '**', component: Empty}
 ];

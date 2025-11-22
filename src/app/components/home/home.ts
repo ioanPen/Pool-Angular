@@ -9,14 +9,4 @@ import { ApiService } from '../../services/api-service';
 })
 export class Home {
 
-constructor (private api:ApiService){}
-
-ngOnInit()
-{
-  this.api.getDepartments().subscribe({
-    next: (data) => console.log('Departments:', data),
-    error: (err) => console.error('Error:',err)
-  });
-}
-
 }

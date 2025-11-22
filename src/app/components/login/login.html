@@ -1,4 +1,4 @@
-<form class="example-form">
+<!-- <form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Favorite food</mat-label>
     <input matInput placeholder="Ex. Pizza" value="Sushi">
@@ -9,7 +9,7 @@
     <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
   </mat-form-field>
 </form>
-<!-- <form class="example-form">
+<form class="example-form">
   <mat-form-field class="example-full-width">
     <mat-label>Email</mat-label>
     <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
@@ -23,3 +23,20 @@
     }
   </mat-form-field>
 </form> -->
+
+
+
+<h2>Login</h2>
+
+<div>
+  <input placeholder="Username" [(ngModel)]="username">
+</div>
+
+<div>
+  <input type="password" placeholder="Password" [(ngModel)]="password">
+</div>
+
+<button (click)="submit()">Login</button>
+
+<p style="color:red">{{error}}</p>
+
