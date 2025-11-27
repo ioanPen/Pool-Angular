@@ -1,0 +1,19 @@
+<p>student works!</p>
+
+
+@if (student){
+  <h2>{{student.name}} {{student.surname}}</h2>
+
+  <h3>Department: <a [routerLink]="['/departments', student.departmentId]" style="font-weight: normal;">missing department name</a></h3>
+
+  <h3>Courses</h3>
+  <ul>
+    @for (course of student.courses; track course.id)
+    {
+    <li><a [routerLink]="['/courses', course.id]">{{course.name}}</a></li>
+    }
+  </ul>
+
+  <h3>{{ studentPasses ? 'Student passes' : 'Student does not pass' }}</h3>
+
+}

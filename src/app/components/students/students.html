@@ -1,1 +1,20 @@
 <p>students works!</p>
+
+
+<h2>Students</h2>
+
+<ul>
+  @for (dep of departments; track dep.id)
+  {
+    <li><h3>{{dep.name}}</h3></li>
+    <ul>
+    @for (stude of students; track stude.id)
+    {
+      @if(stude.departmentId == dep.id){
+        <li><a [routerLink]="['/students', stude.id]">{{stude.name}} {{stude.surname}}</a></li>
+      }
+    }
+    </ul>
+  }
+
+</ul>

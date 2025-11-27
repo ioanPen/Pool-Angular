@@ -6,5 +6,5 @@ export interface ProfessorDto {
   name: string;
   surname: string;
   department: NestedDepartmentDto;
-  courses: NestedCourseDto;
+  courses: NestedCourseDto[];
 }

@@ -1,24 +1,15 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Security } from '../../services/security';
 
 @Component({
   selector: 'app-logout',
-  imports: [],
-  templateUrl: './logout.html',
-  styleUrl: './logout.css',
+  template: `<p>Logging out...</p>`,
 })
 export class Logout {
-
-  constructor(
-    private security: Security,
-  ) {}
-
-
-  logout() {
-  this.security.logout().subscribe(() => {
+  constructor(private security: Security, private router: Router) {
+    this.security.logout();         // remove token
+    this.router.navigate(['/login']); // navigate to login page
     console.log("Logged out");
-  });
-}
-
-
+  }
 }

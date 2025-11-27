@@ -8,13 +8,13 @@ import { DepartmentDto } from '../models';
 })
 export class DepartmentService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private httpClient: HttpClient) {}
 
   getAllDepartments(): Observable<DepartmentDto[]> {
-    return this.http.get<DepartmentDto[]>('http://localhost:8080/api/departments');
+    return this.httpClient.get<DepartmentDto[]>('http://localhost:8080/api/departments',{withCredentials: true});
   }
 
   getDepartment(id: number): Observable<DepartmentDto> {
-    return this.http.get<DepartmentDto>(`http://localhost:8080/api/departments/${id}`);
+    return this.httpClient.get<DepartmentDto>(`http://localhost:8080/api/departments/${id}`,{withCredentials: true});
   }
 }

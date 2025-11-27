@@ -1,1 +1,9 @@
 <p>courses works!</p>
+<h2>Courses</h2>
+
+<ul>
+  @for (course of courses; track course.id)
+  {
+    <li><a [routerLink]="['/courses', course.id]">{{course.name}}</a></li>
+  }
+</ul>

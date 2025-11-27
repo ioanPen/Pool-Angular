@@ -5,7 +5,7 @@
   <ul>
     @for (prof of department.professors; track prof.id)
     {
-    <li>{{prof.name}} {{prof.surname}}</li>
+    <li><a [routerLink]="['/professors', prof.id]">{{prof.name}} {{prof.surname}}</a></li>
     }
   </ul>
 
@@ -13,7 +13,7 @@
   <ul>
     @for (course of department.courses; track course.id)
     {
-    <li>{{course.name}}</li>
+    <li><a [routerLink]="['/courses', course.id]">{{course.name}}</a></li>
     }
   </ul>
 
@@ -21,7 +21,7 @@
   <ul>
     @for (student of department.students; track student.id)
     {
-    <li>{{student.name}} {{student.surname}}</li>
+    <li><a [routerLink]="['/students', student.id]">{{student.name}} {{student.surname}}</a></li>
     }
   </ul>
 }

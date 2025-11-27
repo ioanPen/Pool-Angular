@@ -1,0 +1,20 @@
+<p>course works!</p>
+
+
+@if (course){
+  <h2>{{course.name}}</h2>
+
+
+  <h3>Department: <a [routerLink]="['/departments', course.department.id]" style="font-weight: normal;">{{course.department.name}}</a></h3>
+  <h3>Professor: <a [routerLink]="['/professors', course.professor.id]" style="font-weight: normal;">{{course.professor.name}} {{course.professor.surname}}</a></h3>
+  <h3>Credits: <a style="font-weight: normal;">{{course.credits}}</a></h3>
+  <h3>Duration: <a style="font-weight: normal;">{{course.durationHours}}</a></h3>
+
+  <h3>Students</h3>
+  <ul>
+    @for (student of course.students; track student.id)
+    {
+    <li><a [routerLink]="['/students', student.id]">{{student.name}} {{student.surname}}</a></li>
+    }
+  </ul>
+}

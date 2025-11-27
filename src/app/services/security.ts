@@ -1,29 +1,41 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LoginDTO } from '../models/login-dto';
-import { UserDTO } from '../models/user-dto';
+
+interface LoginResponse {
+  token: string;
+  username: string;
+  role: string;
+  foreignId: number;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class Security {
 
+  private tokenKey = 'jwt_token';
+
   constructor(private http: HttpClient) {}
 
-
-  login(loginInfo: LoginDTO): Observable<UserDTO> {
-    return this.http.post<UserDTO>(`http://localhost:8080/api/login`, loginInfo, {withCredentials: true});
+  login(loginInfo: LoginDTO): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>('http://localhost:8080/api/login', loginInfo)
+      .pipe(
+        tap(res => {
+          // Save JWT in localStorage
+          localStorage.setItem(this.tokenKey, res.token);
+        })
+      );
   }
 
-  logout(): Observable<void> {
-    return this.http.post<void>(`http://localhost:8080/api/logout`, {}, {withCredentials: true});
+  logout(): void {
+    localStorage.removeItem(this.tokenKey);
+
+
   }
 
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
+  }
 }
-
-
-
-
-
-
